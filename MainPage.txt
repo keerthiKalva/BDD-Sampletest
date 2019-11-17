@@ -1,0 +1,30 @@
+package serenity.features.Mainpage;
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.WebDriver;
+import features.Mainpage.steps.CommonWorkflowSteps;
+
+@Story(Mainpage.class)
+public class mainpagetest extends DefinitionTestSuite{
+@Managed(uniqueSession = false)
+public WebDriver webdriver;
+@Steps
+public CommonWorkflowSteps user;
+@Test
+@Repeat
+@WithTagValuesOf({"Login_tothe_dropbox_page"})
+public void Login_tothe_dropbox_page() throws Exception
+{
+
+Utilities.checkIfRunnable(test.getMethodName());
+System.setProperty("ZaleniumTestName","Login_tothe_dropbox_page"+ ": "+ System.getProperty("https://www.dropbox.com/login"));
+
+user.logindeatils("keerthi.reddy.2009@gmail.com",'Keerthi@123");
+user.clicksingin();
+user.clickfileslink();
+user.uploadfiles();
