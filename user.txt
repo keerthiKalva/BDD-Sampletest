@@ -1,0 +1,52 @@
+@FindBy(xpath ="//*[@id='login_email7227537945348377']"
+private WebElementFacade Username;
+
+@FindBy(xpath ="//*[@id='login_password7645727069474841']"
+private WebElementFacade Password;
+
+@FindBy(xpath ="//button[@type='Singin']"
+private WebElementFacade Singinbutton;
+
+@FindBy(xpath = "//*[@id='files']"
+private WebElementFacade Clickfiles;
+
+@FindBy(xpath ="//div[contains(id='Upload files')]"
+private WebElementFacade Uploadfile;
+
+@FindBy(xpath ="//*[id='Upload']"
+private WebElementFacade Uploadbutton;
+
+public void logindeatils(String enterusername, String enterpassword){
+withTimeoutOf(60,TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(Username));
+username.sendKeys(enterusername);
+
+withTimeoutOf(60,TimeUnit.SECONDS).waitFor(ExpectedConditions.elementToBeClickable(Password));
+username.sendKeys(enterpassword);
+}
+
+public void clicksingin() {
+//waitABit(2000);
+//waitForpageBusyIndicator();
+getDriver().switchTo().defaultContent();
+
+getDriver().switchTo().frame(findActivePageFrame());
+Singinbutton.withTimeoutOf(30, TimeUnit.SECONDS).waitUntilClickable().click();
+waitForPageBusyIndicator();
+getDriver().switchTo().defaultContent();
+}
+
+public void clickfileslink(){
+Clickfiles.withTimeoutOf(30, TimeUnit.SECONDS).waitUntilClickable().click();
+}
+
+public void uploadfiles(String [] args){
+
+driver = webdriver.Firefox()
+{
+Uploadfile.withTimeoutOf(30,TimeUnit.SECONDS).waitUntilClickable().click();
+element.send_keys("C:\myfile.txt");
+Uploadbutton.withTimeoutOf(30,TimeUnit.SECONDS).waitUntilClickable().Click();
+System.out.println("Upload file Image successfully");
+waitABit(2000);
+}
+
