@@ -1,0 +1,25 @@
+@FindBy(xpath = "//*[@id='files']"
+private WebElementFacade Clickfiles;
+
+@FindBy(xpath ="//div[contains(id='Upload files')]"
+private WebElementFacade Uploadfile;
+
+@FindBy(xpath ="//*[id='Upload']"
+private WebElementFacade Uploadbutton;
+
+
+public void clickfileslink(){
+Clickfiles.withTimeoutOf(30, TimeUnit.SECONDS).waitUntilClickable().click();
+}
+
+public void uploadfiles(String [] args){
+
+driver = webdriver.Firefox()
+{
+Uploadfile.withTimeoutOf(30,TimeUnit.SECONDS).waitUntilClickable().click();
+element.send_keys("C:\myfile.txt");
+Uploadbutton.withTimeoutOf(30,TimeUnit.SECONDS).waitUntilClickable().Click();
+System.out.println("Upload file Image successfully");
+waitABit(2000);
+}
+
