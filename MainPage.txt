@@ -1,33 +1,29 @@
-package serenity.features.Mainpage;
+package Outline;
+ 
+import org.openqa.selenium.By; 
+import org.openqa.selenium.WebDriver; 
+import org.openqa.selenium.firefox.FirefoxDriver; 
 
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import features.Mainpage.steps.CommonWorkflowSteps;
+import cucumber.annotation.en.Given; 
+import cucumber.annotation.en.Then; 
+import cucumber.annotation.en.When; 
 
-@Story(Mainpage.class)
-public class mainpagetest extends DefinitionTestSuite{
-@Managed(uniqueSession = false)
-public WebDriver webdriver;
-@Steps
-public CommonWorkflowSteps user;
-@Test
-@Repeat
-@WithTagValuesOf({"Login_tothe_dropbox_page"})
-public void Login_tothe_dropbox_page() throws Exception
-{
-
-Utilities.checkIfRunnable(test.getMethodName());
-System.setProperty("ZaleniumTestName","Login_tothe_dropbox_page"+ ": "+ System.getProperty("https://www.dropbox.com/login"));
-
-user.logindeatils("keerthi.reddy.2009@gmail.com",'Keerthi@123");
-user.clicksingin();
-user.clickfileslink();
-user.uploadfiles();
-}
-
+public class stepdefinition { 
+   WebDriver driver = null; 
+	
+   @Given("^user navigates to dropbox$") 
+   public void goTodropbox() { 
+      driver = new FirefoxDriver(); 
+      driver.navigate().to("https://www.dropbox.com/"); 
+   } 
+	
+   @When("^I enter Username as \"([^\"]*)\" and Password as \"([^\"]*)\"$") 
+   public void I_enter_Username_as_and_Password_as(String username, String password) {
+      driver.findElement(By.xpath("//*[@id='login_email7227537945348377']")).sendKeys("keerthi.reddy.2009@gmail.com");
+      driver.findElement(By.xpath("//*[@id='login_password7645727069474841']")).sendKeys("'Keerthi@123");
+      driver.findElement(By.xpath("button[@type='Singin']")).click();
+      user.clickfileslink();
+      user.uploadfiles();
+      driver.close(); 
+   }    
 }
